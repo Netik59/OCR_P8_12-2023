@@ -4,7 +4,7 @@ import '../../utils/style/main.css'
 
 function Header() {
   return (
-    <nav>
+    <nav className="displayFlex-alignCenter">
       <Link to="/">
         <img src={Logo} alt="Logo Kasa rouge" />
       </Link>

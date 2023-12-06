@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+body {
+  margin: 0px;
+}
+
+.displayFlex-alignCenter {
+  display: flex;
+  align-items: center;
+}
 
 nav {
   padding: 35px 100px;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff6060;
+  font-weight: 500;
 }
 
 .StyledLink {
   padding-left: 70px;
-  color: #FF6060;
+  color: #ff6060;
   text-decoration: none;
   font-size: 24px;
   font-weight: 500;
@@ -20,7 +32,8 @@ nav {
 
 .footer__div {
   background-color: black;
-  padding: 100px 0;
+  padding: 40px 0;
+  flex-direction: column;
 }
 
 .footer__text {
@@ -29,4 +42,26 @@ nav {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: white;
+}
+
+.footer__img {
+  width: 122px;
+  height: 40px;
+  padding-bottom: 30px;
+}
+
+.error {
+  flex-direction: column;
+  padding: 100px 0;
+}
+
+.backToHome {
+  text-decoration: underline;
+  font-size: 18px;
+  padding-left: 0;
+}
+
+.error__txt {
+  font-size: 36px;
+  padding: 100px 0;
 }
