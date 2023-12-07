@@ -16,7 +16,10 @@ function Home() {
       <section className="gallery__section">
         {logementsData &&
           logementsData.map((logement, index) => (
-            <Link key={`link-${index}-${logement.id}`} to="/housing-record">
+            <Link
+              key={`link-${index}-${logement.id}`}
+              to={`/housing-record/${logement.id}`}
+            >
               <div
                 key={`divGallery-${index}-${logement.id}`}
                 className="oneGallery"
