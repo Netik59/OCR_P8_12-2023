@@ -1,47 +1,6 @@
-.background__section {
-  position: relative;
-}
-
-.background__div {
-  padding-left: 100px;
-  padding-right: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.background__section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 100px;
-  right: 100px;
-  height: 223px;
-  background: black;
-  opacity: 0.3;
-  z-index: 1;
-  border-radius: 25px;
-}
-
-.background__title {
-  font-size: 48px;
-  color: #fff;
-  position: absolute;
-  z-index: 2;
-}
-
-.background__img {
-  height: 223px;
-  width: 100%;
-  border-radius: 25px;
-  object-fit: cover;
-  mix-blend-mode: darken;
-  z-index: 0;
-}
-
 .gallery__section {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
   margin: 50px 100px;

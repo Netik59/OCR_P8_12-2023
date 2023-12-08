@@ -3,16 +3,15 @@ import '../../utils/style/home.css'
 import img_src_1 from '../../assets/img_src_1.svg'
 import logementsData from '../../data/logements.json' // Supposé url pour la future base de données (pour l'instant l'url est uniquement un fichier JSON)
 import { Link } from 'react-router-dom'
+import Banner from '../../components/Banner'
 
 function Home() {
   return (
     <div>
-      <section className="background__section">
-        <div className="background__div">
-          <img className="background__img" src={img_src_1} alt="Arrière plan" />
-          <h1 className="background__title">Chez vous, partout et ailleurs</h1>
-        </div>
-      </section>
+      <Banner
+        imgSrc={img_src_1}
+        titleContent="Chez vous, partout et ailleurs"
+      />
       <section className="gallery__section">
         {logementsData &&
           logementsData.map((logement, index) => (
