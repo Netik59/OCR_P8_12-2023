@@ -1,15 +1,13 @@
-.wrapper {
+.accordion {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
+  padding-top: 40px;
   user-select: none;
 }
 
-.accordion {
-  display: grid;
+.item {
   width: 75%;
-  gap: 40px;
 }
 
 .title {
@@ -20,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  height: 52px;
+  height: 32px;
 }
 
 .title h2 {
@@ -35,14 +33,23 @@
   overflow: hidden;
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 0.25s cubic-bezier(0.5, 0, 0.9, 1);
 }
 
 .content.show {
   height: auto;
   max-height: 9999px;
   transform: scaleY(1);
-  transition: transform 0.2s cubic-bezier(0.5, 0, 0.9, 1);
+  animation: grey_square 0.2s cubic-bezier(0.5, 0, 0.9, 1) forwards;
+  background-color: #f6f6f6;
+  border-radius: 10px 10px 5px 5px;
+  padding: 0 20px;
+}
+
+.content.close {
+  height: auto;
+  max-height: 9999px;
+  transform: scaleY(0);
+  animation: grey_square--reverse 0.5s cubic-bezier(0.5, 0, 0.9, 1) forwards;
   background-color: #f6f6f6;
   border-radius: 10px 10px 5px 5px;
   padding: 0 20px;
@@ -51,10 +58,76 @@
 .show p {
   color: #ff6060;
   font-size: 18px;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(-200%);
+  animation: anim-text 0.5s ease-in-out forwards;
 }
 
-/* 
-@keyframes anim-square-grey {
+.close p {
+  color: #ff6060;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 1;
+  transform: translateY(0%);
+  animation: anim-text--reverse 0.2s ease-in-out forwards;
+}
+
+.arrow__open {
+  transform: rotate(180deg);
+  animation: arrow__open 0.5s ease-in-out forwards;
+}
+
+.arrow__close {
+  transform: rotate(0deg);
+  animation: arrow__close 0.5s ease-in-out forwards;
+}
+
+@keyframes arrow__close {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes arrow__open {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes anim-text {
+  0% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes anim-text--reverse {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+}
+
+@keyframes grey_square {
   0% {
     transform: scaleY(0);
   }
@@ -62,4 +135,18 @@
   100% {
     transform: scaleY(1);
   }
-} */
+}
+
+@keyframes grey_square--reverse {
+  0% {
+    transform: scaleY(1);
+  }
+
+  90% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    display: none;
+  }
+}

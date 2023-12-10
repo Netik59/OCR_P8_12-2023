@@ -5,6 +5,8 @@ import logementsData from '../../data/logements.json' // Supposé url pour la fu
 import { Link } from 'react-router-dom'
 import Banner from '../../components/Banner'
 
+const selected = 'selected'
+
 function Home() {
   return (
     <div>

@@ -5,6 +5,7 @@ import arrow_forward from '../../assets/arrow_forward.png'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import logementsData from '../../data/logements.json' // Supposé url pour la future base de données (pour l'instant l'url est uniquement un fichier JSON)
+import Collapse from '../../components/Collapse'
 
 const HousingRecord = () => {
   const [logement, setLogement] = useState(null)
@@ -27,6 +28,7 @@ const HousingRecord = () => {
   const pictures = logement.pictures
   const nbPictures = pictures.length
   const tags = logement.tags
+  const equipments = logement.equipments
 
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % nbPictures)
@@ -42,18 +44,18 @@ const HousingRecord = () => {
     <div className="mainContainer">
       <section className="carrousel__section">
         <img
-          className="arrow_back"
+          className={nbPictures === 1 ? 'arrow_back hide' : 'arrow_back'}
           src={arrow_back}
           alt="Flèche de navigation gauche"
           onClick={goToPrevSlide}
         />
         <img
-          className="arrow_forward"
+          className={nbPictures === 1 ? 'arrow_forward hide' : 'arrow_forward'}
           src={arrow_forward}
           alt="Flèche de navigation droite"
           onClick={goToNextSlide}
         />
-        <p className="counter">
+        <p className={nbPictures === 1 ? 'counter hide' : 'counter'}>
           {currentIndex + 1}/{nbPictures}
         </p>
         <img
@@ -65,7 +67,7 @@ const HousingRecord = () => {
       </section>
       <section className="info__section">
         <h1>{logement.title}</h1>
-        <h2>{logement.location}</h2>
+        <h2 className="location">{logement.location}</h2>
         <div className="tags__div">
           {tags &&
             tags.map((tag, index) => (
@@ -73,6 +75,24 @@ const HousingRecord = () => {
                 {tag}
               </button>
             ))}
+        </div>
+        <div className="collapse">
+          <Collapse
+            key={`description-${logement.id}`}
+            title={'Description'}
+            content={logement.description}
+          />
+          <Collapse
+            key={`equipment-${logement.id}`}
+            title={'Equipement'}
+            content={
+              <ul className="ul__equipment">
+                {equipments.map((item, index) => (
+                  <li className="li__equipment">{item}</li>
+                ))}
+              </ul>
+            }
+          />
         </div>
       </section>
     </div>
