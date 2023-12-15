@@ -6,29 +6,43 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import logementsData from '../../data/logements.json' // Supposé url pour la future base de données (pour l'instant l'url est uniquement un fichier JSON)
 import Collapse from '../../components/Collapse'
+import { useNavigate } from 'react-router-dom'
 
 const HousingRecord = () => {
   const [logement, setLogement] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Recherche de l'objet avec l'ID correspondant
     const foundLogement = logementsData.find((item) => item.id === id)
 
-    // Mettre à jour l'état avec l'objet trouvé (ou null s'il n'est pas trouvé)
     setLogement(foundLogement)
   }, [id])
 
-  if (!logement) {
-    // Gérer le cas où aucun logement n'est trouvé pour l'ID spécifié
-    return <div>Logement n°{id} non trouvé</div>
-  }
+  useEffect(() => {
+    let isIdValid = false
 
-  const pictures = logement.pictures
-  const nbPictures = pictures.length
-  const tags = logement.tags
-  const equipments = logement.equipments
+    logementsData.forEach((logementItem) => {
+      if (logementItem.id === id) {
+        isIdValid = true
+      }
+    })
+
+    if (!isIdValid) {
+      navigate('/error')
+    }
+  }, [navigate, id])
+
+  let nbPictures, pictures, host, tags, equipments
+
+  if (logement && logement.pictures && logement.pictures.length) {
+    pictures = logement.pictures
+    nbPictures = pictures.length
+    tags = logement.tags
+    equipments = logement.equipments
+    host = logement.host
+  }
 
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % nbPictures)
@@ -42,59 +56,86 @@ const HousingRecord = () => {
 
   return (
     <div className="mainContainer">
-      <section className="carrousel__section">
-        <img
-          className={nbPictures === 1 ? 'arrow_back hide' : 'arrow_back'}
-          src={arrow_back}
-          alt="Flèche de navigation gauche"
-          onClick={goToPrevSlide}
-        />
-        <img
-          className={nbPictures === 1 ? 'arrow_forward hide' : 'arrow_forward'}
-          src={arrow_forward}
-          alt="Flèche de navigation droite"
-          onClick={goToNextSlide}
-        />
-        <p className={nbPictures === 1 ? 'counter hide' : 'counter'}>
-          {currentIndex + 1}/{nbPictures}
-        </p>
-        <img
-          className="carrousel__img"
-          src={pictures[currentIndex]}
-          alt={logement.title}
-        />
-        <div className="shadowDiv"></div>
-      </section>
-      <section className="info__section">
-        <h1>{logement.title}</h1>
-        <h2 className="location">{logement.location}</h2>
-        <div className="tags__div">
-          {tags &&
-            tags.map((tag, index) => (
-              <button className="tags__button" key={`tag-${index}-${tag}`}>
-                {tag}
-              </button>
-            ))}
-        </div>
-        <div className="collapse">
-          <Collapse
-            key={`description-${logement.id}`}
-            title={'Description'}
-            content={logement.description}
-          />
-          <Collapse
-            key={`equipment-${logement.id}`}
-            title={'Equipement'}
-            content={
-              <ul className="ul__equipment">
-                {equipments.map((item, index) => (
-                  <li className="li__equipment">{item}</li>
+      {logement && logement.pictures && logement.pictures.length !== null ? (
+        <>
+          <section className="carrousel__section">
+            <img
+              className={nbPictures === 1 ? 'arrow_back hide' : 'arrow_back'}
+              src={arrow_back}
+              alt="Flèche de navigation gauche"
+              onClick={goToPrevSlide}
+            />
+            <img
+              className={
+                nbPictures === 1 ? 'arrow_forward hide' : 'arrow_forward'
+              }
+              src={arrow_forward}
+              alt="Flèche de navigation droite"
+              onClick={goToNextSlide}
+            />
+            <h2 className={nbPictures === 1 ? 'counter hide' : 'counter'}>
+              {currentIndex + 1}/{nbPictures}
+            </h2>
+            <img
+              className="carrousel__img"
+              src={pictures[currentIndex]}
+              alt={logement.title}
+            />
+            <div className="shadowDiv"></div>
+          </section>
+          <section className="info__section">
+            <div className="titleAndHost">
+              <h1>{logement.title}</h1>
+              <div className="host">
+                <h2 className="hostName">{host.name}</h2>
+                <img
+                  className="profile"
+                  src={host.picture}
+                  alt={`Profil de ${host.name}`}
+                />
+              </div>
+            </div>
+            <h2 className="location">{logement.location}</h2>
+            <div className="tags__div">
+              {tags &&
+                tags.map((tag, index) => (
+                  <button className="tags__button" key={`tag-${index}-${tag}`}>
+                    {tag}
+                  </button>
                 ))}
-              </ul>
-            }
-          />
-        </div>
-      </section>
+            </div>
+            <div className="collapse">
+              <Collapse
+                title={'Description'}
+                content={
+                  <p key={`description-${logement.id}`}>
+                    {logement.description}
+                  </p>
+                }
+                accordionClass="accordion__housingRecord"
+                itemClass="item__housingRecord"
+              />
+              <Collapse
+                title={'Equipement'}
+                content={
+                  <ul className="ul__equipment">
+                    {equipments.map((item, index) => (
+                      <li
+                        key={`equipment-${logement.id}-${index}`}
+                        className="li__equipment"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                }
+                accordionClass="accordion__housingRecord"
+                itemClass="item__housingRecord"
+              />
+            </div>
+          </section>
+        </>
+      ) : null}
     </div>
   )
 }

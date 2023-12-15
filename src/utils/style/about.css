@@ -1,3 +1,15 @@
 .div__about {
   padding-bottom: 50px;
 }
+
+.accordion__about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  user-select: none;
+}
+
+.item__about {
+  width: 75%;
+}

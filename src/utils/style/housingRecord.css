@@ -35,6 +35,7 @@
   position: absolute;
   bottom: 0;
   z-index: 2;
+  color: #fff;
 }
 
 .hide {
@@ -62,6 +63,26 @@
   font-size: 36px;
 }
 
+.titleAndHost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.host {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hostName {
+  width: 45%;
+}
+
+.profile {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
 .location {
   margin-top: -20px;
 }
@@ -85,6 +106,17 @@
 .collapse {
   display: flex;
   justify-content: center;
+  gap: 60px;
+}
+
+.accordion__housingRecord {
+  padding-top: 40px;
+  user-select: none;
+  width: 50%;
+}
+
+.item__housingRecord {
+  width: 100%;
 }
 
 .ul__equipment {

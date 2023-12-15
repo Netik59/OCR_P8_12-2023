@@ -7,7 +7,6 @@ import Error from './components/Error'
 import Home from './pages/Home'
 import About from './pages/About'
 import HousingRecord from './pages/HousingRecord'
-import logementsData from './data/logements.json' // Supposé url pour la future base de données (pour l'instant l'url est uniquement un fichier JSON)
 
 const root = createRoot(document.getElementById('root'))
 root.render(

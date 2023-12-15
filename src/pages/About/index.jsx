@@ -10,7 +10,13 @@ function About() {
     <div className="div__about">
       <Banner imgSrc={img_src_2} titleContent="" />
       {data.map((item, index) => (
-        <Collapse key={index} title={item.title} content={item.content} />
+        <Collapse
+          key={index}
+          title={item.title}
+          content={<p>{item.content}</p>}
+          accordionClass="accordion__about"
+          itemClass="item__about"
+        />
       ))}
     </div>
   )

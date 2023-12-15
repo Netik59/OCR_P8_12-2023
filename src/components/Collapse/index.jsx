@@ -1,19 +1,28 @@
 import '../../utils/style/main.css'
 import '../../utils/style/collapse.css'
-import arrow_up from '../../assets/arrow_up.png'
 import arrow_down from '../../assets/arrow_down.png'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-function Collapse({ title, content }) {
+function Collapse({ title, content, accordionClass, itemClass }) {
   const [isSelected, setSelected] = useState(false)
+  const [height, setHeight] = useState(null)
+  const contentRef = useRef()
+
+  useEffect(() => {
+    const h = contentRef.current.getBoundingClientRect().height
+    setHeight(h)
+    console.log(h)
+  }, [])
 
   const toggle = () => {
     setSelected(!isSelected)
   }
 
+  console.log(height)
+
   return (
-    <div className="accordion">
-      <div className="item">
+    <div className={accordionClass}>
+      <div className={itemClass}>
         <div className="title" onClick={() => toggle()}>
           <h2>{title}</h2>
           <img
@@ -22,8 +31,17 @@ function Collapse({ title, content }) {
             className={isSelected ? 'arrow__open' : 'arrow__close'}
           />
         </div>
-        <div className={isSelected ? 'content show ' : 'content close'}>
-          <p>{content}</p>
+
+        <div
+          style={{
+            height: isSelected ? height + 'px' : '0px',
+            transition: 'height 0.5s, transform 0.5s',
+            transform: isSelected ? 'scaleY(1)' : 'scaleY(0)',
+            transformOrigin: 'top',
+          }}
+          className="content"
+        >
+          <div ref={contentRef}>{content}</div>
         </div>
       </div>
     </div>
