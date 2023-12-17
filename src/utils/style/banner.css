@@ -1,10 +1,9 @@
 .banner__section {
   position: relative;
+  width: 100%;
 }
 
 .banner__div {
-  padding-left: 100px;
-  padding-right: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,13 +13,14 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 100px;
+  left: 0;
   right: 100px;
   height: 223px;
   background: black;
   opacity: 0.3;
   z-index: 1;
   border-radius: 25px;
+  width: 100%;
 }
 
 .banner__title {
@@ -38,4 +38,24 @@
   mix-blend-mode: darken;
   z-index: 0;
   object-position: 0% 45%;
+}
+
+@media (max-width: 744px) {
+  .banner__title {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 542px) {
+  .banner__img {
+    height: 111px;
+  }
+
+  .banner__section::before {
+    height: 111px;
+  }
+
+  .banner__title {
+    font-size: 24px;
+  }
 }

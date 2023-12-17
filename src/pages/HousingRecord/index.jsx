@@ -6,6 +6,8 @@ import logementsData from '../../data/logements.json' // Supposé url pour la fu
 import Collapse from '../../components/Collapse'
 import { useNavigate } from 'react-router-dom'
 import Slideshow from '../../components/Slideshow'
+import TitleAndHost from '../../components/TitleAndHost'
+import TagsAndStars from '../../components/TagsAndStars'
 
 const HousingRecord = () => {
   const [logement, setLogement] = useState(null)
@@ -32,7 +34,7 @@ const HousingRecord = () => {
     }
   }, [navigate, id])
 
-  let nbPictures, pictures, host, tags, equipments
+  let nbPictures, pictures, host, tags, equipments, rating
 
   if (logement && logement.pictures && logement.pictures.length) {
     pictures = logement.pictures
@@ -40,6 +42,7 @@ const HousingRecord = () => {
     tags = logement.tags
     equipments = logement.equipments
     host = logement.host
+    rating = logement.rating
   }
 
   return (
@@ -54,26 +57,9 @@ const HousingRecord = () => {
             />
           </section>
           <section className="info__section">
-            <div className="titleAndHost">
-              <h1>{logement.title}</h1>
-              <div className="host">
-                <h2 className="hostName">{host.name}</h2>
-                <img
-                  className="profile"
-                  src={host.picture}
-                  alt={`Profil de ${host.name}`}
-                />
-              </div>
-            </div>
+            <TitleAndHost logement={logement} host={host} />
             <h2 className="location">{logement.location}</h2>
-            <div className="tags__div">
-              {tags &&
-                tags.map((tag, index) => (
-                  <button className="tags__button" key={`tag-${index}-${tag}`}>
-                    {tag}
-                  </button>
-                ))}
-            </div>
+            <TagsAndStars rating={rating} tags={tags} />
             <div className="collapse">
               <Collapse
                 title={'Description'}

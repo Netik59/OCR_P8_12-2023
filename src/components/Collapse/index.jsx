@@ -5,11 +5,11 @@ import React, { useEffect, useRef, useState } from 'react'
 
 function Collapse({ title, content, accordionClass, itemClass }) {
   const [isSelected, setSelected] = useState(false)
-  const [height, setHeight] = useState(null)
+  const [height, setHeight] = useState(0) // Définir une hauteur initiale
   const contentRef = useRef()
 
   useEffect(() => {
-    const h = contentRef.current.getBoundingClientRect().height
+    const h = contentRef.current.scrollHeight // Mesurer la hauteur du contenu
     setHeight(h)
     console.log(h)
   }, [])
@@ -38,6 +38,7 @@ function Collapse({ title, content, accordionClass, itemClass }) {
             transition: 'height 0.5s, transform 0.5s',
             transform: isSelected ? 'scaleY(1)' : 'scaleY(0)',
             transformOrigin: 'top',
+            overflow: 'hidden', // Assurez-vous que le contenu masqué est caché
           }}
           className="content"
         >
