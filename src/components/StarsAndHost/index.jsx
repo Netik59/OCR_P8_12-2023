@@ -1,9 +1,9 @@
 import '../../utils/style/main.css'
-import '../../utils/style/tagsAndStars.css'
+import '../../utils/style/starsAndHost.css'
 import starActivePNG from '../../assets/star-active.png'
 import starInactivePNG from '../../assets/star-inactive.png'
 
-function TagsAndStars({ rating, tags }) {
+function StarsAndHost({ rating, host }) {
   const starActive = []
   const starInactive = []
   let nbStarInactive
@@ -32,16 +32,16 @@ function TagsAndStars({ rating, tags }) {
   }
 
   return (
-    <div className="tagsAndStars">
-      <div className="tags__div">
-        {tags &&
-          tags.map((tag, index) => (
-            <button className="tags__button" key={`tag-${index}-${tag}`}>
-              {tag}
-            </button>
-          ))}
+    <div className="starsAndHost">
+      <div className="host">
+        <h2 className="hostName">{host.name}</h2>
+        <img
+          className="profile"
+          src={host.picture}
+          alt={`Profil de ${host.name}`}
+        />
       </div>
-      <div>
+      <div className="stars">
         {starActive}
         {starInactive}
       </div>
@@ -49,4 +49,4 @@ function TagsAndStars({ rating, tags }) {
   )
 }
 
-export default TagsAndStars
+export default StarsAndHost

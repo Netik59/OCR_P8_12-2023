@@ -9,16 +9,13 @@
 }
 
 .info__section {
-  margin-top: 30px;
+  margin-top: 12px;
   margin-bottom: 50px;
 }
 
-.info__section h1 {
-  font-size: 36px;
-}
-
-.location {
-  margin-top: -20px;
+.info__div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .collapse {
@@ -42,4 +39,20 @@
   list-style-type: none;
   padding: 0;
   gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .info__div {
+    display: block;
+  }
+  .collapse {
+    gap: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .accordion__housingRecord {
+    padding-top: 20px;
+    width: 100%;
+  }
 }

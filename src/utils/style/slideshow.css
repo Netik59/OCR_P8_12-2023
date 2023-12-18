@@ -36,7 +36,27 @@
   position: absolute;
   bottom: 0;
   height: 75px;
-  width: 86%;
+  width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
   border-radius: 25px;
+}
+
+@media (max-width: 768px) {
+  .carrousel__section {
+    height: 255px;
+  }
+
+  .carrousel__img {
+    height: 255px;
+  }
+
+  .arrow_back,
+  .arrow_forward {
+    width: 35px;
+    height: 35px;
+  }
+
+  .counter {
+    display: none;
+  }
 }

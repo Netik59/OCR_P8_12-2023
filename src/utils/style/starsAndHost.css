@@ -1,0 +1,50 @@
+.starsAndHost {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: column;
+}
+.host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hostName {
+  width: 45%;
+}
+
+.profile {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.stars {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .starsAndHost {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .stars img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hostName {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .host img {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -28,7 +28,7 @@ function Collapse({ title, content, accordionClass, itemClass }) {
           <img
             src={arrow_down}
             alt="Chevron vers le bas"
-            className={isSelected ? 'arrow__open' : 'arrow__close'}
+            className={isSelected ? 'arrow arrow__open' : 'arrow arrow__close'}
           />
         </div>
 

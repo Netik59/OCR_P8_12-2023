@@ -6,8 +6,8 @@ import logementsData from '../../data/logements.json' // Supposé url pour la fu
 import Collapse from '../../components/Collapse'
 import { useNavigate } from 'react-router-dom'
 import Slideshow from '../../components/Slideshow'
-import TitleAndHost from '../../components/TitleAndHost'
-import TagsAndStars from '../../components/TagsAndStars'
+import TitleLocationTags from '../../components/TitleLocationTags'
+import StarsAndHost from '../../components/StarsAndHost'
 
 const HousingRecord = () => {
   const [logement, setLogement] = useState(null)
@@ -57,9 +57,10 @@ const HousingRecord = () => {
             />
           </section>
           <section className="info__section">
-            <TitleAndHost logement={logement} host={host} />
-            <h2 className="location">{logement.location}</h2>
-            <TagsAndStars rating={rating} tags={tags} />
+            <div className="info__div">
+              <TitleLocationTags logement={logement} tags={tags} />
+              <StarsAndHost rating={rating} host={host} />
+            </div>
             <div className="collapse">
               <Collapse
                 title={'Description'}

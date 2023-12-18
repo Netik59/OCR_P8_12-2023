@@ -13,3 +13,9 @@
 .item__about {
   width: 75%;
 }
+
+@media (max-width: 523px) {
+  .item__about {
+    width: 100%;
+  }
+}

@@ -44,12 +44,15 @@ p {
 }
 
 .StyledLink {
-  padding-left: 70px;
   color: #ff6060;
   font-size: 24px;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
+}
+
+.StyledLinkNav {
+  padding-left: 70px;
 }
 
 .selected {
@@ -86,23 +89,29 @@ p {
 .backToHome {
   text-decoration: underline;
   font-size: 18px;
-  padding-left: 0;
 }
 
 .error__txt {
   font-size: 36px;
   padding: 100px 0;
-}
-
-@media (max-width: 1080px) {
-  body {
-    margin: 0 20px;
-  }
+  text-align: center;
 }
 
 @media (max-width: 1080px) {
   .footer__div {
     margin: 0 -20px;
+  }
+  body {
+    margin: 0 20px;
+  }
+
+  .error img {
+    width: 48%;
+  }
+
+  .error__txt {
+    font-size: 30px;
+    padding: 30px 0;
   }
 }
 
@@ -111,10 +120,22 @@ p {
     width: 145px;
     height: 47px;
   }
+
+  .error {
+    gap: 50px;
+  }
+
+  .error__txt {
+    font-size: 18px;
+  }
+
+  .backToHome {
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 425) and (max-width: 542px) {
-  .StyledLink {
+  .StyledLinkNav {
     font-size: 12px;
     padding: 0 20px;
   }
@@ -129,14 +150,14 @@ p {
   }
 }
 
-@media (max-width: 423px) {
-  .StyledLink {
+@media (max-width: 424px) {
+  .StyledLinkNav {
     padding-left: 20px;
   }
 }
 
 @media (max-width: 523px) {
-  .StyledLink {
+  .StyledLinkNav {
     font-size: 12px;
   }
 
