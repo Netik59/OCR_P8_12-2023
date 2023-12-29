@@ -14,8 +14,8 @@ function Header() {
         <Link
           className={
             location.pathname === '/'
-              ? 'StyledLink StyledLinkNav selected'
-              : 'StyledLink StyledLinkNav'
+              ? 'styledLink styledLinkNav selected'
+              : 'styledLink styledLinkNav'
           }
           to="/"
         >
@@ -24,8 +24,8 @@ function Header() {
         <Link
           className={
             location.pathname === '/about'
-              ? 'StyledLink StyledLinkNav selected'
-              : 'StyledLink StyledLinkNav'
+              ? 'styledLink styledLinkNav selected'
+              : 'styledLink styledLinkNav'
           }
           to="/about"
         >

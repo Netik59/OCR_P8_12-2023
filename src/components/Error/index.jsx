@@ -9,7 +9,7 @@ function Error() {
       <h1 className="error__txt">
         Oups! La page que vous demandez n'existe pas.
       </h1>
-      <Link className={`StyledLink backToHome`} to="/">
+      <Link className={`styledLink backToHome`} to="/">
         Retourner sur la page d'accueil
       </Link>
     </div>
