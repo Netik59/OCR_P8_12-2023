@@ -34,7 +34,7 @@
 }
 
 .arrow__open {
-  transform: rotate(0deg);
+  transform: rotate(0);
 }
 
 .arrow__close {

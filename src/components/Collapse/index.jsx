@@ -34,7 +34,7 @@ function Collapse({ title, content, accordionClass, itemClass }) {
 
         <div
           style={{
-            height: isSelected ? height + 'px' : '0px',
+            height: isSelected ? height + 'px' : '0',
             transition: 'height 0.5s, transform 0.5s',
             transform: isSelected ? 'scaleY(1)' : 'scaleY(0)',
             transformOrigin: 'top',

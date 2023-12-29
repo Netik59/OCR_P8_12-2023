@@ -1,6 +1,6 @@
 import '../../utils/style/main.css'
 import '../../utils/style/about.css'
-import Banner from '../../components/Banner'
+import Banner from '../../components/banner/Banner'
 import Collapse from '../../components/Collapse'
 import img_src_2 from '../../assets/img_src_2.svg'
 import data from '../../data/about.json'
